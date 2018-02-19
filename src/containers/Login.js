@@ -34,7 +34,8 @@ const handleFailure = (response) => {
 }
 
 const mapStateToProps = (state) => ({
-    onFailure: handleFailure
+    onFailure: handleFailure,
+    user: state.session.user
 })
 
 const mapDispatchToProps = (dispatch) => ({

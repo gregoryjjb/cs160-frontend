@@ -4,7 +4,7 @@ import GoogleLogin from 'react-google-login';
 
 const signInWithGoogleImage = require('./btn_google_signin_light_normal_web.png');
 
-const LoginButton = ({clientId, onSuccess, onFailure}) => {
+const LoginButton = ({clientId, onSuccess, onFailure, user}) => {
     
     const style = {
         backgroundColor: 'rgba(0,0,0,0)',
@@ -23,6 +23,7 @@ const LoginButton = ({clientId, onSuccess, onFailure}) => {
             onFailure={onFailure}
             style={style} >
             <img src={signInWithGoogleImage} />
+            <p>{(user) ? user.firstname + ' ' + user.lastname : ''}</p>
         </GoogleLogin>
     );
 }
