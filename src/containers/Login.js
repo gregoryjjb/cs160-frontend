@@ -1,24 +1,31 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import axios from 'axios';
+import { receiveTokenId } from 'actions';
 
 import LoginButton from 'components/LoginButton';
 
 const handleSuccess = (response) => {
     // Recieve the google login response
-    console.log(response);
-    /*fetch('/login', {
+    var postData = {
+        token: response.tokenId
+    };
+    
+    /*axios.post('api/login', postData)
+    .then(result => {
+        console.log(result.data);
+    })*/
+    
+    /*fetch('api/login', {
         method: 'POST',
-        body: JSON.stringify(response.profileObj),
+        body: JSON.stringify(postData),
         headers: new Headers({
             'Content-Type': 'application/json'
         })
     })
-    .then(() => {
-        fetch('/users')
-        .then(res => res.json())
-        .then(res => {
-            console.log(res);
-        });
+    .then(res => res.json())
+    .then(res => {
+        //console.log(res);
     });*/
 }
 
@@ -27,13 +34,12 @@ const handleFailure = (response) => {
 }
 
 const mapStateToProps = (state) => ({
-    onSuccess: handleSuccess,
     onFailure: handleFailure
 })
 
-const mapDispatchToProps = {
-    
-};
+const mapDispatchToProps = (dispatch) => ({
+    onSuccess: (res) => receiveTokenId(dispatch, res.tokenId)
+});
 
 const Login = connect(mapStateToProps, mapDispatchToProps)(LoginButton);
 
