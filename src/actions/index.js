@@ -32,7 +32,7 @@ export function receiveTokenId(dispatch, tokenId) {
     
     dispatch(requestSession(tokenId));
     
-    axios.post('api/login', {token: tokenId + '0'})
+    axios.post('api/login', {token: tokenId})
     .then(result => {
         dispatch(receiveSession(result.data));
     })
