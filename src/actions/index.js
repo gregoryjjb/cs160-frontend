@@ -5,6 +5,7 @@ export const SEND_USER = 'SEND_USER';
 
 export const REQUEST_SESSION = 'REQUEST_SESSION';
 export const RECEIVE_SESSION = 'RECEIVE_SESSION';
+export const RECEIVE_SESSION_FAIL = 'RECEIVE_SESSION_FAIL';
 
 export function requestSession(tokenId) {
     return {
@@ -20,12 +21,22 @@ export function receiveSession(session) {
     }
 }
 
+export function receiveSessionFail(error) {
+    return {
+        type: RECEIVE_SESSION_FAIL,
+        error
+    }
+}
+
 export function receiveTokenId(dispatch, tokenId) {
     
     dispatch(requestSession(tokenId));
     
-    axios.post('api/login', {token: tokenId})
+    axios.post('api/login', {token: tokenId + '0'})
     .then(result => {
         dispatch(receiveSession(result.data));
+    })
+    .catch(error => {
+        dispatch(receiveSessionFail(error));
     });
 }
