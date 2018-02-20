@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 
-import Login from 'containers/Login';
+import WelcomePage from 'pages/WelcomePage';
 
 const App = () => (
     <div>
-        <p>Hello world!</p>
-        <Login />
+        <WelcomePage />
     </div>
 );
 

@@ -42,6 +42,6 @@ const mapDispatchToProps = (dispatch) => ({
     onSuccess: (res) => receiveTokenId(dispatch, res.tokenId)
 });
 
-const Login = connect(mapStateToProps, mapDispatchToProps)(LoginButton);
+const LoginButtonContainer = connect(mapStateToProps, mapDispatchToProps)(LoginButton);
 
-export default Login;
+export default LoginButtonContainer;

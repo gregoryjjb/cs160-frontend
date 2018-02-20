@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-
 import GoogleLogin from 'react-google-login';
 
 const signInWithGoogleImage = require('img/btn_google_signin_light_normal_web.png');

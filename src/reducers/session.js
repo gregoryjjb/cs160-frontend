@@ -11,11 +11,9 @@ function session(state = initialState, action) {
     
     switch(action.type) {
         case REQUEST_SESSION:
-            console.log("Requested session");
             return Object.assign({}, state, {isFetching: true});
             
         case RECEIVE_SESSION:
-            console.log("Received session");
             return Object.assign({}, state, action.session, {isFetching: false});
         
         default:
