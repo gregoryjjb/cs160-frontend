@@ -9,7 +9,8 @@
     "react-google-login": "^3.0.4",
     "react-redux": "^5.0.7",
     "react-scripts": "1.1.1",
-    "redux": "^3.7.2"
+    "redux": "^3.7.2",
+    "rmwc": "^1.2.0"
   },
   "scripts": {
     "start": "react-scripts start",
