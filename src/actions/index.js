@@ -6,6 +6,7 @@ export const SEND_USER = 'SEND_USER';
 export const REQUEST_SESSION = 'REQUEST_SESSION';
 export const RECEIVE_SESSION = 'RECEIVE_SESSION';
 export const RECEIVE_SESSION_FAIL = 'RECEIVE_SESSION_FAIL';
+export const REMOVE_SESSION = 'REMOVE_SESSION';
 
 export function requestSession(tokenId) {
     return {
@@ -28,7 +29,15 @@ export function receiveSessionFail(error) {
     }
 }
 
+export function removeSession() {
+    return {
+        type: REMOVE_SESSION
+    }
+}
+
 export function receiveTokenId(dispatch, tokenId) {
+    
+    console.log("GOOGLE DATA", window.gapi);
     
     dispatch(requestSession(tokenId));
     
