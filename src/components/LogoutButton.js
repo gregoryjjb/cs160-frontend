@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { GoogleLogout } from 'react-google-login';
 import { Button } from 'rmwc/Button';
 
-const LogoutButton = ({sessionId, onSuccess}) => {
+const LogoutButton = ({sessionId, onSuccess, isFetching}) => (
     
     /*return(
         <GoogleLogout
@@ -11,7 +11,11 @@ const LogoutButton = ({sessionId, onSuccess}) => {
             />
     );*/
 
-    return <Button onClick={() => onSuccess(sessionId)}>Log out</Button>;
-}
+    <Button
+        disabled={isFetching}
+        onClick={() => onSuccess(sessionId)}>
+        Log out
+    </Button>
+)
 
 export default LogoutButton;

@@ -3,7 +3,8 @@ import { beginLogout } from 'actions';
 import LogoutButton from 'components/LogoutButton';
 
 const mapStateToProps = (state) => ({
-    sessionId: state.session.user.sessionId
+    sessionId: state.session.user.sessionId,
+    isFetching: state.session.isFetching
 })
 
 const mapDispatchToProps = (dispatch) => ({
