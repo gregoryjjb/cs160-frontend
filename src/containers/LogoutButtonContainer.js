@@ -1,13 +1,13 @@
 import { connect } from 'react-redux';
-import { removeSession } from 'actions';
+import { beginLogout } from 'actions';
 import LogoutButton from 'components/LogoutButton';
 
 const mapStateToProps = (state) => ({
-    
+    sessionId: state.session.user.sessionId
 })
 
 const mapDispatchToProps = (dispatch) => ({
-    onSuccess: () => dispatch(removeSession())
+    onSuccess: (sessionId) => beginLogout(dispatch, sessionId)
 })
 
 const LogoutButtonContainer = connect(mapStateToProps, mapDispatchToProps)(LogoutButton);
