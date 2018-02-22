@@ -82,5 +82,6 @@ export function beginLogout(dispatch, sessionId) {
     axios.get('api/logout', {headers: {Authorization: sessionId}} )
     .then(result => {
         dispatch(removeSession());
+        Cookies.remove('sessionId');
     })
 }
