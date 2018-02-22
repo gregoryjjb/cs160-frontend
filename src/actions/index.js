@@ -1,4 +1,4 @@
-
+import Cookies from 'js-cookie';
 import axios from 'axios';
 import session from '../reducers/session';
 
@@ -8,10 +8,9 @@ export const RECEIVE_SESSION_FAIL = 'RECEIVE_SESSION_FAIL';
 export const REQUEST_END_SESSION = 'REQUEST_END_SESSION';
 export const REMOVE_SESSION = 'REMOVE_SESSION';
 
-export function requestSession(tokenId) {
+export function requestSession() {
     return {
-        type: REQUEST_SESSION,
-        tokenId
+        type: REQUEST_SESSION
     }
 }
 
@@ -47,13 +46,29 @@ export function receiveTokenId(dispatch, tokenId) {
     
     console.log("GOOGLE DATA", window.gapi);
     
-    dispatch(requestSession(tokenId));
+    dispatch(requestSession());
     
     axios.post('api/login', {token: tokenId})
     .then(result => {
         dispatch(receiveSession(result.data));
+        Cookies.set('sessionId', result.data.user.sessionId, {expires: 7});
+        console.log("COOKIE SHOULD HAVE GOT SET");
     })
     .catch(error => {
+        dispatch(receiveSessionFail(error));
+    });
+}
+
+export function continueSession(dispatch, sessionId) {
+
+    dispatch(requestSession());
+
+    axios.post('api/login', {sessionId: sessionId})
+    .then(result => {
+        dispatch(receiveSession(result.data));
+    })
+    .catch(error => {
+        Cookies.remove('sessionId');
         dispatch(receiveSessionFail(error));
     });
 }
