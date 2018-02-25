@@ -1,4 +1,5 @@
 import axios from 'axios';
+import Cookies from 'js-cookie';
 
 export const REQUEST_VIDEOS = 'REQUEST_VIDEOS';
 export const RECEIVE_VIDEOS = 'RECEIVE_VIDEOS';
@@ -25,7 +26,9 @@ export function getVideos(dispatch, userId) {
     
     const url = 'api/videos/' + userId;
     
-    axios.get(url)
+    const sid = Cookies.get('sessionId');
+    
+    axios.get(url, {headers: {Authorization: sid}})
     .then(result => {
         dispatch(receiveVideos(result.data));
     })
