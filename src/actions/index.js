@@ -2,6 +2,8 @@ import Cookies from 'js-cookie';
 import axios from 'axios';
 import session from '../reducers/session';
 
+import { getVideos } from 'actions/video';
+
 export const REQUEST_SESSION = 'REQUEST_SESSION';
 export const RECEIVE_SESSION = 'RECEIVE_SESSION';
 export const RECEIVE_SESSION_FAIL = 'RECEIVE_SESSION_FAIL';
@@ -44,15 +46,13 @@ export function removeSession() {
 
 export function receiveTokenId(dispatch, tokenId) {
     
-    console.log("GOOGLE DATA", window.gapi);
-    
     dispatch(requestSession());
     
     axios.post('api/login', {token: tokenId})
     .then(result => {
         dispatch(receiveSession(result.data));
         Cookies.set('sessionId', result.data.user.sessionId, {expires: 7});
-        console.log("COOKIE SHOULD HAVE GOT SET");
+        getVideos(dispatch, result.data.user.id);
     })
     .catch(error => {
         dispatch(receiveSessionFail(error));
@@ -66,6 +66,7 @@ export function continueSession(dispatch, sessionId) {
     axios.post('api/login', {sessionId: sessionId})
     .then(result => {
         dispatch(receiveSession(result.data));
+        getVideos(dispatch, result.data.user.id);
     })
     .catch(error => {
         Cookies.remove('sessionId');
@@ -75,8 +76,6 @@ export function continueSession(dispatch, sessionId) {
 
 export function beginLogout(dispatch, sessionId) {
     
-    console.log("LOGGING OUT OF", sessionId);
-
     dispatch(requestEndSession());
 
     axios.get('api/logout', {headers: {Authorization: sessionId}} )
