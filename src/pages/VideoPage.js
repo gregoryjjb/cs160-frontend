@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 
 import LogoutButtonContainer from 'containers/LogoutButtonContainer';
 import Videos from 'containers/Videos';
+import VideoDialogContainer from 'containers/VideoDialogContainer';
 
-import ButtonPanel from 'components/ButtonPanel';
+import ButtonPanelContainer from 'containers/ButtonPanelContainer';
 import Header from 'components/Header';
 
 const videoArea = {
@@ -26,12 +27,13 @@ const VideoPage = ({user}) => {
             <Header titleText="Videos" />
             <div style={videoArea}>
                 <div style={buttonArea}>
-                    <ButtonPanel />
+                    <ButtonPanelContainer />
                 </div>
                 <div style={listArea}>
                     <Videos />
                 </div>
             </div>
+            <VideoDialogContainer />
         </div>
     );
 }

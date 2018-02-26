@@ -10,6 +10,21 @@ export const RECEIVE_SESSION_FAIL = 'RECEIVE_SESSION_FAIL';
 export const REQUEST_END_SESSION = 'REQUEST_END_SESSION';
 export const REMOVE_SESSION = 'REMOVE_SESSION';
 
+export const OPEN_VIDEO_DIALOG = 'OPEN_VIDEO_DIALOG';
+export const CLOSE_VIDEO_DIALOG = 'CLOSE_VIDEO_DIALOG';
+
+export function openVideoDialog() {
+    return {
+        type: OPEN_VIDEO_DIALOG
+    }
+}
+
+export function closeVideoDialog() {
+    return {
+        type: CLOSE_VIDEO_DIALOG
+    }
+}
+
 export function requestSession() {
     return {
         type: REQUEST_SESSION
