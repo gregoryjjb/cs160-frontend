@@ -15,7 +15,7 @@ const LogoutButton = ({sessionId, onSuccess, isFetching}) => (
     <Button
         disabled={isFetching}
         onClick={() => onSuccess(sessionId)}>
-        <Icon use="person" />
+        <Icon use="person" style={{transform: 'translate(-5px, 5px)'}} />
         Log out
     </Button>
 )
