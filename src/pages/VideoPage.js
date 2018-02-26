@@ -4,6 +4,7 @@ import LogoutButtonContainer from 'containers/LogoutButtonContainer';
 import Videos from 'containers/Videos';
 
 import ButtonPanel from 'components/ButtonPanel';
+import Header from 'components/Header';
 
 const videoArea = {
     display: 'flex'
@@ -22,7 +23,7 @@ const VideoPage = ({user}) => {
     
     return(
         <div>
-            <p>Videos go here</p>
+            <Header titleText="Videos" />
             <div style={videoArea}>
                 <div style={buttonArea}>
                     <ButtonPanel />
@@ -31,7 +32,6 @@ const VideoPage = ({user}) => {
                     <Videos />
                 </div>
             </div>
-            <LogoutButtonContainer />
         </div>
     );
 }
