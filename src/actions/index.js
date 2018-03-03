@@ -1,7 +1,7 @@
 import Cookies from 'js-cookie';
 import axios from 'axios';
 import session from '../reducers/session';
-
+import api from 'utils/api';
 import { getVideos } from 'actions/video';
 
 export const REQUEST_SESSION = 'REQUEST_SESSION';
@@ -62,8 +62,8 @@ export function removeSession() {
 export function receiveTokenId(dispatch, tokenId) {
     
     dispatch(requestSession());
-    
-    axios.post('api/login', {token: tokenId})
+	
+    api.loginWithTokenId(tokenId)
     .then(result => {
         dispatch(receiveSession(result.data));
         Cookies.set('sessionId', result.data.user.sessionId, {expires: 7});
@@ -78,7 +78,7 @@ export function continueSession(dispatch, sessionId) {
 
     dispatch(requestSession());
 
-    axios.post('api/login', {sessionId: sessionId})
+    api.loginWithSessionId(sessionId)
     .then(result => {
         dispatch(receiveSession(result.data));
         getVideos(dispatch, result.data.user.id);
@@ -93,7 +93,7 @@ export function beginLogout(dispatch, sessionId) {
     
     dispatch(requestEndSession());
 
-    axios.get('api/logout', {headers: {Authorization: sessionId}} )
+    api.logout()
     .then(result => {
         dispatch(removeSession());
         Cookies.remove('sessionId');
