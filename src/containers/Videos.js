@@ -3,7 +3,8 @@ import VideoList from 'components/VideoList';
 import { getVideos } from '../actions/video';
 
 const mapStateToProps = (state) => ({
-    videos: state.videos.videos
+	videos: state.videos.videos,
+	loading: state.videos.isFetching
 })
 
 const mapDispatchToProps = (dispatch) => ({

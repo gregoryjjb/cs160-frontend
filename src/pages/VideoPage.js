@@ -16,7 +16,8 @@ const buttonArea = {
 }
 
 const listArea = {
-    paddingLeft: '1em',
+	paddingLeft: '1em',
+	paddingRight: '1em',
     width: '100%'
 }
 
