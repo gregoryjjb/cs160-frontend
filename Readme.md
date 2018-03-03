@@ -11,7 +11,7 @@ This project was bootstrapped with [create-react-app](https://github.com/faceboo
 * Once it's done installing required packages run
   > npm start
 * The development server will be running at [localhost:3000](http://localhost:3000).
-  * Note! Google authentication will not work on any other port or URL. Google requires that I specify the domains that are allowed to log in and right now I just have localhost:3000 listed.
+  * Note! Google authentication will not work on any other port or URL. Google requires that I specify the domains that are allowed to log in ~~and right now I just have localhost:3000 listed.~~ Both :3000 and :4000 now work.
 
 ### Communication with the server
 
