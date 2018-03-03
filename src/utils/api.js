@@ -8,16 +8,31 @@ const getHeaders = () => ({
 var api = {};
 
 api.loginWithSessionId = (sessionId) => {
-	return axios.post('api/login', {sessionId: sessionId});
+	return axios.post(
+		'api/login',
+		{ sessionId: sessionId }
+	)
 }
 
 api.loginWithTokenId = (tokenId) => {
-	return axios.post('api/login', {token: tokenId});
+	return axios.post(
+		'api/login',
+		{ token: tokenId }
+	)
 }
 
 api.logout = () => {
-	console.log('STOREEEEEEEEE', store);
-	return axios.get('api/logout', {headers: getHeaders()} )
+	return axios.get(
+		'api/logout',
+		{ headers: getHeaders() }
+	)
+}
+
+api.getVideos = (userId) => {
+	return axios.get(
+		'api/videos/' + userId,
+		{ headers: getHeaders() }
+	)
 }
 
 export default api;
