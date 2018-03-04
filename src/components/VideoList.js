@@ -5,7 +5,7 @@ import VideoListItem from 'components/VideoListItem';
 
 const VideoList = ({videos, loading}) => (
 	<div>
-		<LinearProgress determinate={false} style={{ display: (loading ? 'unset' : 'none') }} />
+		<LinearProgress determinate={false} style={{ display: (loading ? 'block' : 'none') }} />
 		<List>
 			{videos.map(video => (
 				<VideoListItem video={video} />
