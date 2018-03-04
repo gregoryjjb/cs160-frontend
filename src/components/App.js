@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
+import AutoLogin from 'containers/AutoLogin';
 
-import WelcomePage from 'pages/WelcomePage';
+import PageRouterContainer from 'containers/PageRouterContainer';
 
 const App = () => (
     <div>
-        <WelcomePage />
+        <PageRouterContainer />
+        <AutoLogin />
     </div>
 );
 

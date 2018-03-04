@@ -1,5 +1,11 @@
-import { SET_SESSION } from 'actions';
-import { REQUEST_SESSION, RECEIVE_SESSION, RECEIVE_SESSION_FAIL } from '../actions';
+import {
+    SET_SESSION,
+    REQUEST_SESSION,
+    RECEIVE_SESSION,
+    RECEIVE_SESSION_FAIL,
+    REQUEST_END_SESSION,
+    REMOVE_SESSION
+ } from 'actions';
 
 const initialState = {
     isFetching: false,
@@ -19,6 +25,12 @@ function session(state = initialState, action) {
         
         case RECEIVE_SESSION_FAIL:
             return Object.assign({}, state, {loginFailed: true, isFetching: false});
+        
+        case REQUEST_END_SESSION:
+            return Object.assign({}, state, {isFetching: true});
+        
+        case REMOVE_SESSION:
+            return Object.assign({}, state, {loginFailed: false, isFetching: false, user: null});
         
         default:
             return state;
