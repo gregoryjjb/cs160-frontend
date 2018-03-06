@@ -53,11 +53,12 @@ class VideoDialog extends Component {
 		
 		if(valid) {
 			var data = {
-				file: this.state.filePath,
+				//file: this.state.filePath,
 				name: this.state.videoName
 			};
 			
 			this.props.onSubmit(data);
+			this.props.onClose();
 		}
 	}
 	

@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import { closeVideoDialog } from 'actions';
+import { newVideo } from 'actions/video';
 import VideoDialog from 'components/VideoDialog';
 
 const mapStateToProps = (state) => ({
@@ -8,7 +9,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
 	onClose: () => dispatch(closeVideoDialog()),
-	onSubmit: (data) => console.log('SUBMITTED', data)
+	onSubmit: (data) => newVideo(dispatch, data)
 })
 
 const VideoDialogContainer = connect(mapStateToProps, mapDispatchToProps)(VideoDialog);

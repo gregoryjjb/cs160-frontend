@@ -5,6 +5,10 @@ const getHeaders = () => ({
 	Authorization: (store.getState().session.user) ? store.getState().session.user.sessionId : ''
 })
 
+const getUserId = () => (
+	(store.getState().session.user) ? store.getState().session.user.id : ''
+)
+
 var api = {};
 
 api.loginWithSessionId = (sessionId) => {
@@ -30,7 +34,7 @@ api.logout = () => {
 
 api.getVideos = (userId) => {
 	return axios.get(
-		'api/videos/' + userId,
+		'api/videos/' + getUserId(),
 		{ headers: getHeaders() }
 	)
 }
