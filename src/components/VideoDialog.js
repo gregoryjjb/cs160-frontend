@@ -88,7 +88,7 @@ class VideoDialog extends Component {
                     </DialogBody>
                     <DialogFooter>
                         <DialogFooterButton cancel>Cancel</DialogFooterButton>
-                        <DialogFooterButton onClick={this.onSubmit}>Upload</DialogFooterButton>
+                        <DialogFooterButton onClick={this.onSubmit} theme="secondary-bg text-primary-on-secondary" >Upload</DialogFooterButton>
                     </DialogFooter>
                 </DialogSurface>
                 <DialogBackdrop />
