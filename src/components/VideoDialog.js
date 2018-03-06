@@ -20,24 +20,54 @@ class VideoDialog extends Component {
 
         this.state = {
             filePath: '',
-            videoName: ''
+			videoName: '',
+			filePathValid: true,
+			videoNameValid: true
         }
     }
 
     handleFileChange = (e) => {
 
         this.setState({
-            filePath: e.target.value,
+			filePath: e.target.value,
+			filePathValid: (e.target.value != ''),
             videoName: e.target.value.replace(/^.*[\\\/]/, '').replace(/\.[^/.]+$/, '')
         });
     }
-
-    formStyle = {
+	
+	validate = () => {
+		let fileValid = (this.state.filePath != '');
+		let nameValid = (this.state.videoName != '');
+		
+		this.setState({
+			filePathValid: fileValid,
+			videoNameValid: nameValid
+		});
+		
+		return (fileValid && nameValid);
+	}
+	
+	onSubmit = () => {
+		
+		var valid = this.validate();
+		
+		if(valid) {
+			var data = {
+				file: this.state.filePath,
+				name: this.state.videoName
+			};
+			
+			this.props.onSubmit(data);
+		}
+	}
+	
+	formStyle = {
         display: 'flex',
         flexDirection: 'column'
-    }
+	}
 
     render() {
+		
         return(
             <Dialog open={this.props.isOpen} onClose={this.props.onClose} >
                 <DialogSurface>
@@ -46,16 +76,19 @@ class VideoDialog extends Component {
                     </DialogHeader>
                     <DialogBody style={this.formStyle}>
                         Upload video form
-                        <FileField onChange={this.handleFileChange} />
-                        <TextField disabled value={this.state.filePath} label="Your file" />
+                        <FileField
+							invalid={!this.state.filePathValid}
+							onChange={this.handleFileChange}
+							textWidth='30em' />
                         <TextField
-                            label="Video Name"
+							label="Video Name"
+							invalid={!this.state.videoNameValid}
                             value={this.state.videoName}
-                            onChange={(e) => this.setState({videoName: e.target.value})} />
+                            onChange={(e) => {this.setState({videoName: e.target.value, videoNameValid: (e.target.value != '')}); this.validate();}} />
                     </DialogBody>
                     <DialogFooter>
                         <DialogFooterButton cancel>Cancel</DialogFooterButton>
-                        <DialogFooterButton accept>Upload</DialogFooterButton>
+                        <DialogFooterButton onClick={this.onSubmit}>Upload</DialogFooterButton>
                     </DialogFooter>
                 </DialogSurface>
                 <DialogBackdrop />
