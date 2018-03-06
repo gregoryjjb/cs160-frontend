@@ -35,4 +35,12 @@ api.getVideos = (userId) => {
 	)
 }
 
+api.postVideo = (data) => {
+	return axios.post(
+		'api/videos',
+		data,
+		{ headers: getHeaders() }
+	)
+}
+
 export default api;
