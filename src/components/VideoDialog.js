@@ -19,8 +19,22 @@ class VideoDialog extends Component {
         super(props);
 
         this.state = {
-            fileName: ''
+            filePath: '',
+            videoName: ''
         }
+    }
+
+    handleFileChange = (e) => {
+
+        this.setState({
+            filePath: e.target.value,
+            videoName: e.target.value.replace(/^.*[\\\/]/, '').replace(/\.[^/.]+$/, '')
+        });
+    }
+
+    formStyle = {
+        display: 'flex',
+        flexDirection: 'column'
     }
 
     render() {
@@ -30,11 +44,14 @@ class VideoDialog extends Component {
                     <DialogHeader>
                         <DialogHeaderTitle>New Video</DialogHeaderTitle>
                     </DialogHeader>
-                    <DialogBody style={{display: 'block'}}>
-                        Video upload input would go here.
-                        <TextField label="Video Name" />
-                        <TextField value={this.state.fileName} label="Your file" />
-                        <FileField onChange={e => this.setState({fileName: e.target.value})} />
+                    <DialogBody style={this.formStyle}>
+                        Upload video form
+                        <FileField onChange={this.handleFileChange} />
+                        <TextField disabled value={this.state.filePath} label="Your file" />
+                        <TextField
+                            label="Video Name"
+                            value={this.state.videoName}
+                            onChange={(e) => this.setState({videoName: e.target.value})} />
                     </DialogBody>
                     <DialogFooter>
                         <DialogFooterButton cancel>Cancel</DialogFooterButton>
