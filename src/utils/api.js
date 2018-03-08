@@ -27,23 +27,20 @@ api.loginWithTokenId = (tokenId) => {
 
 api.logout = () => {
 	return axios.get(
-		'api/logout',
-		{ headers: getHeaders() }
+		'api/logout'
 	)
 }
 
 api.getVideos = (userId) => {
 	return axios.get(
-		'api/videos/' + getUserId(),
-		{ headers: getHeaders() }
+		'api/videos/' + getUserId()
 	)
 }
 
 api.postVideo = (data) => {
 	return axios.post(
 		'api/videos',
-		data,
-		{ headers: getHeaders() }
+		data
 	)
 }
 
