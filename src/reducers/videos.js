@@ -2,6 +2,7 @@ import {
     REQUEST_VIDEOS,
     RECEIVE_VIDEOS
 } from 'actions/video';
+import { SEND_VIDEO } from '../actions/video';
 
 const initialState = {
     isFetching: false,
@@ -23,7 +24,13 @@ function videos(state = initialState, action) {
                 isFetching: false,
                 videos: action.videos
             });
-        
+		
+		case SEND_VIDEO:
+			return({
+				...state,
+				isFetching: true
+			});
+			
         default: 
             return state;
     }
