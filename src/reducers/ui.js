@@ -1,8 +1,10 @@
 
 import { OPEN_VIDEO_DIALOG, CLOSE_VIDEO_DIALOG } from 'actions';
+import { ADD_TOAST, REMOVE_TOAST } from '../actions/ui';
 
 const initialState = {
-    videoDialogIsOpen: false
+	videoDialogIsOpen: false,
+	toasts: []
 }
 
 function ui(state = initialState, action) {
@@ -18,7 +20,26 @@ function ui(state = initialState, action) {
                 ...state,
                 videoDialogIsOpen: false
             }
-            
+		
+		case ADD_TOAST:
+			return {
+				...state,
+				toasts: [
+					...state.toasts,
+					{
+						message: action.message,
+						duration: action.duration,
+						id: action.id
+					}
+				]
+			}
+		
+		case REMOVE_TOAST:
+			return {
+				...state,
+				toasts: state.toasts.filter(toast => toast.id !== action.id)
+			}
+		
         default:
             return state;
     }
