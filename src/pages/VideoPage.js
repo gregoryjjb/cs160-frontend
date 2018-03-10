@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 
 import LogoutButtonContainer from 'containers/LogoutButtonContainer';
 import Videos from 'containers/Videos';
+import VideoViewer from 'components/VideoViewer';
+
 import VideoDialogContainer from 'containers/VideoDialogContainer';
 
 import ButtonPanelContainer from 'containers/ButtonPanelContainer';
@@ -15,10 +17,15 @@ const buttonArea = {
     
 }
 
+const mainArea = {
+	display: 'flex',
+	width: '100%'
+}
+
 const listArea = {
 	paddingLeft: '1em',
 	paddingRight: '1em',
-    width: '100%'
+    width: '50%'
 }
 
 const VideoPage = ({user}) => {
@@ -30,9 +37,12 @@ const VideoPage = ({user}) => {
                 <div style={buttonArea}>
                     <ButtonPanelContainer />
                 </div>
-                <div style={listArea}>
-                    <Videos />
-                </div>
+				<div style={mainArea}>
+					<div style={listArea}>
+						<Videos />
+					</div>
+					<VideoViewer style={{width: '50%'}} />
+				</div>
             </div>
             <VideoDialogContainer />
         </div>
