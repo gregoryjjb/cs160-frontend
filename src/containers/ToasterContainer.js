@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { Toaster } from 'components/Toaster';
+import Toaster from 'components/Toaster';
 
 const mapStateToProps = (state) => ({
 	toasts: state.ui.toasts

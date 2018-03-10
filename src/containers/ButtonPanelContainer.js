@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import { openVideoDialog } from 'actions';
+import { popToast } from 'actions/ui';
 import ButtonPanel from 'components/ButtonPanel';
 
 const mapStateToProps = (state) => ({
@@ -7,7 +8,8 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-    onNewVideoClick: () => dispatch(openVideoDialog())
+	onNewVideoClick: () => dispatch(openVideoDialog()),
+	onHelpClick: () => popToast(dispatch, 'help me', 1000)
 })
 
 const ButtonPanelContainer = connect(mapStateToProps, mapDispatchToProps)(ButtonPanel);

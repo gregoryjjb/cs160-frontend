@@ -10,7 +10,7 @@ const ButtonPanel = ({onNewVideoClick, onHelpClick}) => (
     <Drawer permanent>
         <DrawerContent style={{cursor: 'pointer'}} >
             <SimpleListItem graphic="add_circle_outline" text="New Video" onClick={onNewVideoClick} />
-            <SimpleListItem graphic="help" text="Help" />
+            <SimpleListItem graphic="help" text="Help" onClick={onHelpClick} />
         </DrawerContent>
     </Drawer>
 )
