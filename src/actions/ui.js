@@ -4,7 +4,7 @@ export const REMOVE_TOAST = 'REMOVE_TOAST';
 
 let nextToastId = 0;
 
-export const popToast = (dispatch, message, duration = 1000) => {
+export const popToast = (dispatch, message, duration = 5000) => {
 	
 	let id = nextToastId++;
 	

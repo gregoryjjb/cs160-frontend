@@ -9,7 +9,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
 	onNewVideoClick: () => dispatch(openVideoDialog()),
-	onHelpClick: () => popToast(dispatch, 'help me', 1000)
+	onHelpClick: () => popToast(dispatch, 'help me', 5000)
 })
 
 const ButtonPanelContainer = connect(mapStateToProps, mapDispatchToProps)(ButtonPanel);

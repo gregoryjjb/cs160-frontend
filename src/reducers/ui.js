@@ -4,9 +4,7 @@ import { ADD_TOAST, REMOVE_TOAST } from '../actions/ui';
 
 const initialState = {
 	videoDialogIsOpen: false,
-	toasts: [{
-		message: 'First toast'
-	}]
+	toasts: []
 }
 
 function ui(state = initialState, action) {
