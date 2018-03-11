@@ -6,4 +6,20 @@
 	--mdc-theme-secondary: #ffa726;
 	--mdc-theme-secondary-light: #ffa726;
 	--mdc-theme-secondary-dark: #c77800;
+	
+	--mdc-theme-text-primary-on-secondary: #000;
+    --mdc-theme-text-secondary-on-secondary: hsla(0,0%,00,.7);
+    --mdc-theme-text-hint-on-secondary: hsla(0,0%,00,.5);
+    --mdc-theme-text-disabled-on-secondary: hsla(0,0%,00,.5);
+    --mdc-theme-text-icon-on-secondary: hsla(0,0%,00,.5);
+    --mdc-theme-text-primary-on-secondary-light: rgba(0,0,0,.87);
+    --mdc-theme-text-secondary-on-secondary-light: rgba(0,0,0,.54);
+    --mdc-theme-text-hint-on-secondary-light: rgba(0,0,0,.38);
+    --mdc-theme-text-disabled-on-secondary-light: rgba(0,0,0,.38);
+    --mdc-theme-text-icon-on-secondary-light: rgba(0,0,0,.38);
+    --mdc-theme-text-primary-on-secondary-dark: #000;
+    --mdc-theme-text-secondary-on-secondary-dark: hsla(0,0%,00,.7);
+    --mdc-theme-text-hint-on-secondary-dark: hsla(0,0%,00,.5);
+    --mdc-theme-text-disabled-on-secondary-dark: hsla(0,0%,00,.5);
+    --mdc-theme-text-icon-on-secondary-dark: hsla(0,0%,00,.5);
 }
