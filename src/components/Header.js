@@ -19,7 +19,7 @@ const logoutStyle = {
 }
 
 const Header = ({titleText}) => (
-    <div style={style}>
+    <div style={style} className="mdc-theme--primary-bg mdc-theme--text-primary-on-primary" >
         <Typography use="display2">{titleText}</Typography>
         <div style={logoutStyle} >
             <LogoutButtonContainer />

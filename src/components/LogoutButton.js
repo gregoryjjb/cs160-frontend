@@ -13,6 +13,7 @@ const LogoutButton = ({sessionId, onSuccess, isFetching}) => (
     );*/
 
     <Button
+		className="mdc-theme--text-primary-on-primary"
         disabled={isFetching}
         onClick={() => onSuccess(sessionId)}>
         <Icon use="person" style={{transform: 'translate(-5px, 5px)'}} />
