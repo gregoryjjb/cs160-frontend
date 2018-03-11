@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import LogoutButtonContainer from 'containers/LogoutButtonContainer';
 import Videos from 'containers/Videos';
-import VideoViewer from 'components/VideoViewer';
+import VideoViewerContainer from 'containers/VideoViewerContainer';
 
 import VideoDialogContainer from 'containers/VideoDialogContainer';
 
@@ -41,7 +41,7 @@ const VideoPage = ({user}) => {
 					<div style={listArea}>
 						<Videos />
 					</div>
-					<VideoViewer style={{width: '50%'}} />
+					<VideoViewerContainer style={{width: '50%'}} />
 				</div>
             </div>
             <VideoDialogContainer />

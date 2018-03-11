@@ -17,12 +17,12 @@ const loadingOverlayStyle = {
 	backgroundColor: 'rgba(0,0,0,0.25)'
 }
 
-const VideoList = ({videos, loading}) => (
+const VideoList = ({videos, loading, videoSelected}) => (
 	<div style={divStyle} >
 		<LinearProgress determinate={false} style={{ display: (loading ? 'block' : 'none') }} />
 		<List>
 			{videos.map(video => (
-				<VideoListItem video={video} />
+				<VideoListItem onClick={() => videoSelected(video.id)} video={video} />
 			))}
 		</List>
 		<div style={{...loadingOverlayStyle, display: (loading ? 'block' : 'none') }}></div>

@@ -7,8 +7,8 @@ import {
     ListItemMeta
 } from 'rmwc/List';
 
-const VideoListItem = ({video}) => (
-    <ListItem>
+const VideoListItem = ({video, onClick}) => (
+    <ListItem onClick={onClick} >
         <ListItemText>{video.name}</ListItemText>
     </ListItem>
 )

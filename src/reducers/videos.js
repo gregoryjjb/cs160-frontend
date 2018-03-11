@@ -1,11 +1,13 @@
 import {
     REQUEST_VIDEOS,
-    RECEIVE_VIDEOS
+	RECEIVE_VIDEOS,
+	SELECT_VIDEO
 } from 'actions/video';
 import { SEND_VIDEO } from '../actions/video';
 
 const initialState = {
-    isFetching: false,
+	isFetching: false,
+	selected: -1,
     videos: []
 }
 
@@ -30,6 +32,12 @@ function videos(state = initialState, action) {
 				...state,
 				isFetching: true
 			});
+		
+		case SELECT_VIDEO:
+			return ({
+				...state,
+				selected: action.id
+			})
 			
         default: 
             return state;

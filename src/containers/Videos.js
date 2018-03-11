@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import VideoList from 'components/VideoList';
-import { getVideos } from '../actions/video';
+import { getVideos, selectVideo } from '../actions/video';
 
 const mapStateToProps = (state) => ({
 	videos: state.videos.videos,
@@ -8,7 +8,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-    
+    videoSelected: (id) => dispatch(selectVideo(id))
 })
 
 const Videos = connect(mapStateToProps, mapDispatchToProps)(VideoList);

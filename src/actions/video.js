@@ -5,6 +5,7 @@ import api from 'utils/api';
 export const REQUEST_VIDEOS = 'REQUEST_VIDEOS';
 export const RECEIVE_VIDEOS = 'RECEIVE_VIDEOS';
 export const SEND_VIDEO = 'SEND_VIDEO';
+export const SELECT_VIDEO = 'SELECT_VIDEO';
 
 export function requestVideos(userId) {
     return {
@@ -24,6 +25,15 @@ export function sendVideo() {
 		type: SEND_VIDEO
 	}
 }
+
+export const selectVideo = (id) => ({
+	type: SELECT_VIDEO,
+	id
+})
+
+export const selectedVideo = (state) => (
+	state.videos.videos.find(v => v.id === state.videos.selected)
+)
 
 /** Async */
 
