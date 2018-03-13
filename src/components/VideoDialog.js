@@ -76,10 +76,10 @@ class VideoDialog extends Component {
                         <DialogHeaderTitle>New Video</DialogHeaderTitle>
                     </DialogHeader>
                     <DialogBody style={this.formStyle}>
-                        Upload video form
                         <FileField
 							invalid={!this.state.filePathValid}
 							onChange={this.handleFileChange}
+							accept="video/*"
 							textWidth='30em' />
                         <TextField
 							label="Video Name"

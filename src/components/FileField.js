@@ -60,7 +60,11 @@ class FileField extends Component {
 					value={this.state.filePath}
 					label={this.props.filePathText || 'Filename'}
 				/>
-				<input type='file' style={fileInputStyle} onChange={this.onFileChange} />
+				<input
+					type='file'
+					accept={this.props.accept}
+					style={fileInputStyle}
+					onChange={this.onFileChange} />
 			</div>
 		)
 	}
