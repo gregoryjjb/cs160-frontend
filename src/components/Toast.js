@@ -6,7 +6,8 @@ const toastStyle = {
 	position: 'unset',
 	transform: 'none',
 	margin: '1em',
-	zIndex: 10
+	zIndex: 10,
+	pointerEvents: 'all'
 }
 
 const textStyle = {
@@ -23,7 +24,7 @@ const Toast = ({message, id, key, onAction}) => (
 				type="button"
 				className="mdc-snackbar__action-button"
 				style={textStyle}
-				onClick={onAction}
+				onClick={() => onAction(id)}
 				>
 				Close
 			</button>

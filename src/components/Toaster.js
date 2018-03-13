@@ -8,10 +8,10 @@ const style = {
 	backgroundColor: 'alpha'
 }
 
-const Toaster = ({toasts}) => (
+const Toaster = ({toasts, onAction}) => (
 	<div style={style} >
 		{toasts.slice(0).reverse().map((toast, key) => (
-			<Toast message={toast.message} index={key} onAction={() => console.log('Click')} />
+			<Toast message={toast.message} index={key} id={toast.id} onAction={onAction} />
 		))}
 	</div>
 )
