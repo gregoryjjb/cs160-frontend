@@ -3,8 +3,18 @@ import GoogleLogin from 'react-google-login';
 
 const signInWithGoogleImage = require('img/btn_google_signin_light_normal_web.png');
 
+const googleClientId = process.env.REACT_APP_GOOGLE_CLIENT_ID;
+
 const LoginButton = ({clientId, onSuccess, onFailure, user}) => {
-    
+	
+	if(!googleClientId) {
+		console.error(
+            'No Google API client ID specified. To fix this:\n' + 
+			'\t1. Go to https://developers.google.com/identity/sign-in/web/sign-in and create a new project\n' +
+            '\t2. Assing that client ID to the env variable REACT_APP_GOOGLE_CLIENT_ID in the environment Webpack runs in'
+        );
+	}
+	
     const style = {
         backgroundColor: 'rgba(0,0,0,0)',
         border: 'none',
@@ -13,7 +23,7 @@ const LoginButton = ({clientId, onSuccess, onFailure, user}) => {
     
     return(
         <GoogleLogin
-            clientId="15965114724-3b71qboka3ij341kddr78df42et1nt7q.apps.googleusercontent.com"
+            clientId={googleClientId}
             onSuccess={onSuccess}
             onFailure={onFailure}
             style={style} >
