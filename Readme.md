@@ -8,6 +8,8 @@ This project was bootstrapped with [create-react-app](https://github.com/faceboo
 * Clone the repo
 * CD into the repo and run
   > npm install
+* Get a Google client ID and assign it to the env variable `REACT_APP_GOOGLE_CLIENT_ID`.
+  * For development I recommend creating a `.env.local` file and putting it in there. DO NOT put it in `.env` as that file is version controlled.
 * Once it's done installing required packages run
   > npm start
 * The development server will be running at [localhost:3000](http://localhost:3000).
