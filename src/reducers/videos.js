@@ -30,7 +30,14 @@ function videos(state = initialState, action) {
 		case SEND_VIDEO:
 			return({
 				...state,
-				isFetching: true
+				//isFetching: true
+				videos: [
+					...state.videos,
+					{
+						...action.video,
+						isLoading: true
+					}
+				]
 			});
 		
 		case SELECT_VIDEO:

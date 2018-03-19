@@ -20,9 +20,10 @@ export function receiveVideos(videos) {
     }
 }
 
-export function sendVideo() {
+export function sendVideo(video) {
 	return {
-		type: SEND_VIDEO
+		type: SEND_VIDEO,
+		video
 	}
 }
 
@@ -52,7 +53,7 @@ export function getVideos(dispatch, userId) {
 
 export function newVideo(dispatch, data, file) {
 	
-	dispatch(sendVideo());
+	dispatch(sendVideo(data));
 	
 	api.postVideo(data, file)
 	.then(result => {

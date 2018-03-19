@@ -22,7 +22,7 @@ const VideoList = ({videos, loading, videoSelected}) => (
 		<LinearProgress determinate={false} style={{ display: (loading ? 'block' : 'none') }} />
 		<List>
 			{videos.map(video => (
-				<VideoListItem onClick={() => videoSelected(video.id)} video={video} key={video.id} />
+				<VideoListItem onClick={() => videoSelected(video.id)} video={video} key={video.id} isLoading={video.isLoading} />
 			))}
 		</List>
 		<div style={{...loadingOverlayStyle, display: (loading ? 'block' : 'none') }}></div>
