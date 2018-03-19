@@ -1,13 +1,14 @@
 import React from 'react';
 
 const blankVideo = {
-	name: 'Select a video'
+	name: 'Select a video',
+	path: ''
 }
 
 const VideoViewer = ({video = blankVideo, style}) => (
 	<div style={style} >
-		<video controls style={{width: '100%'}} >
-			<source src="http://clips.vorwaerts-gmbh.de/VfE_html5.mp4" />
+		<video controls style={{width: '100%'}} key={video.path} >
+			<source src={video.path} />
 		</video>
 		<p>{video.name}</p>
 	</div>
