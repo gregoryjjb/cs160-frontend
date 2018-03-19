@@ -9,7 +9,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
 	onClose: () => dispatch(closeVideoDialog()),
-	onSubmit: (data) => newVideo(dispatch, data)
+	onSubmit: (data, file) => newVideo(dispatch, data, file)
 })
 
 const VideoDialogContainer = connect(mapStateToProps, mapDispatchToProps)(VideoDialog);

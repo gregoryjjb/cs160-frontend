@@ -37,10 +37,19 @@ api.getVideos = (userId) => {
 	)
 }
 
-api.postVideo = (data) => {
+api.postVideo = (data, file) => {
+	
+	let fd = new FormData();
+	
+	Object.keys(data).map(key => {
+		fd.append(key, data[key]);
+	})
+	
+	fd.append('file', file);
+	
 	return axios.post(
 		'api/videos',
-		data
+		fd
 	)
 }
 

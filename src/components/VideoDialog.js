@@ -57,7 +57,9 @@ class VideoDialog extends Component {
 				name: this.state.videoName
 			};
 			
-			this.props.onSubmit(data);
+			var file = document.getElementById('VIDEO_UPLOAD').files[0]
+			
+			this.props.onSubmit(data, file);
 			this.props.onClose();
 		}
 	}
@@ -80,7 +82,8 @@ class VideoDialog extends Component {
 							invalid={!this.state.filePathValid}
 							onChange={this.handleFileChange}
 							accept="video/*"
-							textWidth='30em' />
+							textWidth='30em'
+							id="VIDEO_UPLOAD" />
                         <TextField
 							label="Video Name"
 							invalid={!this.state.videoNameValid}

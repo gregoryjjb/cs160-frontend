@@ -61,6 +61,7 @@ class FileField extends Component {
 					label={this.props.filePathText || 'Filename'}
 				/>
 				<input
+					id='VIDEO_UPLOAD'
 					type='file'
 					accept={this.props.accept}
 					style={fileInputStyle}

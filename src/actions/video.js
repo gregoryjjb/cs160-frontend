@@ -50,16 +50,17 @@ export function getVideos(dispatch, userId) {
     })
 }
 
-export function newVideo(dispatch, data) {
+export function newVideo(dispatch, data, file) {
 	
 	dispatch(sendVideo());
 	
-	api.postVideo({videoData: data})
+	api.postVideo(data, file)
 	.then(result => {
 		getVideos(dispatch, '');
 	})
 	.catch(error => {
 		console.log("POST NEW VIDEO HAD ERROR");
+		getVideos(dispatch, '');
 	})
 	
 }
