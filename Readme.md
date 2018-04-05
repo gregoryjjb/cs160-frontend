@@ -4,7 +4,7 @@ This project was bootstrapped with [create-react-app](https://github.com/faceboo
 
 ## Installation
 
-* Download [Node](https://nodejs.org/) (including NPM)
+* Download & install [Node.js](https://nodejs.org/) (including NPM)
 * Clone the repo
 * CD into the repo and run
   > npm install
