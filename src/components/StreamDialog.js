@@ -10,8 +10,16 @@ import {
     DialogFooterButton,
     DialogBackdrop
 } from 'rmwc/Dialog';
+import io from 'socket.io-client';
+import ss from 'socket.io-stream';
+
+import recorder from 'media-recorder-stream';
 
 class StreamDialog extends Component {
+    
+    socket;
+    socketStream;
+    realStream;
 
     constructor(props) {
         super(props);
@@ -38,9 +46,21 @@ class StreamDialog extends Component {
                 .then(stream => {
                     this.setState({localstream: stream});
                     document.querySelector('#stream-video').srcObject = stream;
+                    
+                    this.socket = io('/');
+                    this.socket.emit('connection');
+                    this.socketStream = ss.createStream();
+                    
+                    this.realStream = recorder(stream, {interval: 1000});
+                    this.realStream.on('data', (data) => {
+                        console.log('Recorded data', data);
+                    })
+                    
+                    this.realStream.pipe(this.socketStream);
+                    ss(this.socket).emit('vid', this.socketStream);
                 })
                 .catch(error => {
-                    console.error("Error getting webcam");
+                    console.error("Error getting webcam", error);
                 })
             }
         }
@@ -54,6 +74,9 @@ class StreamDialog extends Component {
             console.log(this.state.localstream);
             this.state.localstream.getTracks()[0].stop();
             this.setState({localstream: null});
+            
+            this.realStream.destroy();
+            this.socket.disconnect();
         }
 
         this.props.onClose();
