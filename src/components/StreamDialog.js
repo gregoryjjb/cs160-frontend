@@ -40,7 +40,7 @@ class StreamDialog extends Component {
                     document.querySelector('#stream-video').srcObject = stream;
                 })
                 .catch(error => {
-        
+                    console.error("Error getting webcam");
                 })
             }
         }
@@ -64,7 +64,7 @@ class StreamDialog extends Component {
             <Dialog open={this.props.isOpen} onClose={this.onClose} >
                 <DialogSurface>
                     <DialogBody>
-                        <video id="stream-video" autoPlay playsinline style={{width: '100%'}} />
+                        <video id="stream-video" autoPlay playsInline style={{width: '100%'}} />
                     </DialogBody>
                     <DialogFooter>
                         <DialogFooterButton cancel>Close</DialogFooterButton>
