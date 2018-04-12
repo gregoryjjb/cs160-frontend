@@ -23,23 +23,27 @@ class StreamDialog extends Component {
 
     componentDidMount() {
         // Put variables in global scope to make them available to the browser console.
-        const constraints = window.constraints = {
-            audio: false,
-            video: true
-        };
-
-        navigator.mediaDevices.getUserMedia(constraints)
-        .then(stream => {
-            this.setState({localstream: stream});
-            document.querySelector('#stream-video').srcObject = stream;
-        })
-        .catch(error => {
-
-        })
+        
     }
 
-    componentWillUnmount() {
+    componentWillUpdate(nextProps, nextState) {
+        if(nextProps.isOpen === true && this.props.isOpen === false) {
+            if(!this.state.localstream) {
+                const constraints = window.constraints = {
+                    audio: false,
+                    video: true
+                };
         
+                navigator.mediaDevices.getUserMedia(constraints)
+                .then(stream => {
+                    this.setState({localstream: stream});
+                    document.querySelector('#stream-video').srcObject = stream;
+                })
+                .catch(error => {
+        
+                })
+            }
+        }
     }
 
     onClose = () => {
@@ -49,6 +53,7 @@ class StreamDialog extends Component {
             console.log("Stopping stream");
             console.log(this.state.localstream);
             this.state.localstream.getTracks()[0].stop();
+            this.setState({localstream: null});
         }
 
         this.props.onClose();
