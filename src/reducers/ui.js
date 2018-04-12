@@ -1,9 +1,15 @@
 
-import { OPEN_VIDEO_DIALOG, CLOSE_VIDEO_DIALOG } from 'actions';
+import {
+	OPEN_VIDEO_DIALOG,
+	CLOSE_VIDEO_DIALOG,
+	OPEN_STREAM_DIALOG,
+	CLOSE_STREAM_DIALOG,
+} from 'actions';
 import { ADD_TOAST, REMOVE_TOAST } from '../actions/ui';
 
 const initialState = {
 	videoDialogIsOpen: false,
+	streamDialogIsOpen: false,
 	toasts: []
 }
 
@@ -21,6 +27,18 @@ function ui(state = initialState, action) {
                 videoDialogIsOpen: false
             }
 		
+		case OPEN_STREAM_DIALOG:
+            return {
+                ...state,
+                streamDialogIsOpen: true
+            };
+        
+        case CLOSE_STREAM_DIALOG:
+            return {
+                ...state,
+                streamDialogIsOpen: false
+            }
+
 		case ADD_TOAST:
 			return {
 				...state,

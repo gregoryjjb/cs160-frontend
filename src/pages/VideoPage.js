@@ -5,6 +5,7 @@ import Videos from 'containers/Videos';
 import VideoViewerContainer from 'containers/VideoViewerContainer';
 
 import VideoDialogContainer from 'containers/VideoDialogContainer';
+import StreamDialogContainer from 'containers/StreamDialogContainer';
 
 import ButtonPanelContainer from 'containers/ButtonPanelContainer';
 import Header from 'components/Header';
@@ -45,6 +46,7 @@ const VideoPage = ({user}) => {
 				</div>
             </div>
             <VideoDialogContainer />
+            <StreamDialogContainer />
         </div>
     );
 }

@@ -13,6 +13,9 @@ export const REMOVE_SESSION = 'REMOVE_SESSION';
 export const OPEN_VIDEO_DIALOG = 'OPEN_VIDEO_DIALOG';
 export const CLOSE_VIDEO_DIALOG = 'CLOSE_VIDEO_DIALOG';
 
+export const OPEN_STREAM_DIALOG = 'OPEN_STREAM_DIALOG';
+export const CLOSE_STREAM_DIALOG = 'CLOSE_STREAM_DIALOG';
+
 export function openVideoDialog() {
     return {
         type: OPEN_VIDEO_DIALOG
@@ -24,6 +27,9 @@ export function closeVideoDialog() {
         type: CLOSE_VIDEO_DIALOG
     }
 }
+
+export const openStreamDialog = () => ({type: OPEN_STREAM_DIALOG})
+export const closeStreamDialog = () => ({type: CLOSE_STREAM_DIALOG})
 
 export function requestSession() {
     return {
