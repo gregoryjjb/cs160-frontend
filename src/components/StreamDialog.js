@@ -13,6 +13,8 @@ import {
 import io from 'socket.io-client';
 import ss from 'socket.io-stream';
 
+import MediaElementWrapper from 'mediasource';
+
 import recorder from 'media-recorder-stream';
 
 class StreamDialog extends Component {
@@ -39,13 +41,13 @@ class StreamDialog extends Component {
             if(!this.state.localstream) {
                 const constraints = window.constraints = {
                     audio: false,
-                    video: true
+                    video: true,
                 };
         
                 navigator.mediaDevices.getUserMedia(constraints)
                 .then(stream => {
                     this.setState({localstream: stream});
-                    document.querySelector('#stream-video').srcObject = stream;
+                    //document.querySelector('#stream-video').srcObject = stream;
                     
                     this.socket = io('/');
                     this.socket.emit('connection');
@@ -53,11 +55,33 @@ class StreamDialog extends Component {
                     
                     this.realStream = recorder(stream, {interval: 1000});
                     this.realStream.on('data', (data) => {
-                        console.log('Recorded data', data);
+                        console.log('< Recorded blob of data');
                     })
                     
                     this.realStream.pipe(this.socketStream);
                     ss(this.socket).emit('vid', this.socketStream);
+                    
+                    ss(this.socket).on('vid-back', backStream => {
+                        
+                        console.log("Server opened backwards stream");
+                        
+                        var elem = document.querySelector('#stream-video');
+                        var wrapper = new MediaElementWrapper(elem);
+                        var writable = wrapper.createWriteStream('video/webm; codecs="vp8"');
+                        
+                        elem.addEventListener('error', function () {
+                            var errorCode = elem.error
+                            var detailedError = wrapper.detailedError
+                            console.error(errorCode);
+                            console.error(detailedError);
+                        })
+                        
+                        backStream.pipe(writable);
+                        
+                        backStream.on('data', data => {
+                            console.log('> Received blob of data');
+                        })
+                    })
                 })
                 .catch(error => {
                     console.error("Error getting webcam", error);
@@ -72,7 +96,7 @@ class StreamDialog extends Component {
         if(this.state.localstream) {
             console.log("Stopping stream");
             console.log(this.state.localstream);
-            this.state.localstream.getTracks()[0].stop();
+            this.state.localstream.getTracks().map(track => track.stop());
             this.setState({localstream: null});
             
             this.realStream.destroy();
