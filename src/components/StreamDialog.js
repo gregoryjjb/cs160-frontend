@@ -41,7 +41,7 @@ class StreamDialog extends Component {
             if(!this.state.localstream) {
                 const constraints = window.constraints = {
                     audio: false,
-                    video: true,
+                    video: { width: 640, height: 480 },
                 };
         
                 navigator.mediaDevices.getUserMedia(constraints)
