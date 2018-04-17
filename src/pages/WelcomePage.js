@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { css } from 'glamor';
 import { Typography } from 'rmwc/Typography';
 import LoginBox from 'components/LoginBox';
 import LoginButtonContainer from 'containers/LoginButtonContainer';
@@ -43,15 +44,22 @@ const centeredStyle = {
     padding: '0 2em',
 }
 
+const textShrinker = (size) => css({
+    '@media(max-width: 900px)': {
+        fontSize: size,
+        lineHeight: 'unset',
+    }
+})
+
 const WelcomePage = ({}) => (
     <div style={backgroundStyle} >
         <div style={{...darkenStyle, color: 'white'}}>
             <div style={{...centeredStyle, marginTop: '5em'}} >
-                <h1><Typography use='display4' >The Power of Neural Networks</Typography></h1>
-                <h2><Typography use='display3' >But in the cloud</Typography></h2>
+                <h1><Typography use='display4' {...textShrinker('4rem')} >The Power of Neural Networks</Typography></h1>
+                <h2><Typography use='display3' {...textShrinker('2rem')} >But in the cloud</Typography></h2>
             </div>
             <div style={{width: '100%', textAlign: 'center', paddingTop: '2em'}} >
-                <p><Typography use='headline' >Become part of the experience today</Typography></p>
+                <p><Typography use='headline' {...textShrinker('1.25rem')} >Become part of the experience today</Typography></p>
                 <LoginButtonContainer />
             </div>
             <div style={footerStyle}>
