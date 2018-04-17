@@ -15,6 +15,7 @@
     "react-scripts": "1.1.1",
     "redux": "^3.7.2",
     "redux-devtools-extension": "^2.13.2",
+    "render-media": "^2.12.0",
     "rmwc": "^1.2.0",
     "socket.io": "^2.1.0",
     "socket.io-client": "^2.1.0",

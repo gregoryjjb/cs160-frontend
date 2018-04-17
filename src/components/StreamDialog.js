@@ -14,6 +14,7 @@ import io from 'socket.io-client';
 import ss from 'socket.io-stream';
 
 import MediaElementWrapper from 'mediasource';
+import render from 'render-media';
 
 import recorder from 'media-recorder-stream';
 
@@ -77,6 +78,15 @@ class StreamDialog extends Component {
                         })
                         
                         backStream.pipe(writable);
+                        
+                        /*var file = {
+                            name: 'video.webm',
+                            createReadStream: () => backStream,
+                        }
+                        
+                        render.render(file, document.querySelector('#stream-video'), (err, elem) => {
+                            if(err) return console.error(err.message);
+                        })*/
                         
                         backStream.on('data', data => {
                             console.log('> Received blob of data');
