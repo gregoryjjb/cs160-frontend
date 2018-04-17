@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import LoginBox from 'components/LoginBox';
 import LoginButtonContainer from 'containers/LoginButtonContainer';
 
-import bgImg from 'img/welcome-background.jpg';
+import bgImg from 'img/web-neural-network.jpg';
 
 const backgroundStyle = {
     position: 'absolute',
@@ -23,7 +23,7 @@ const imageStyle = {
     bottom: 0,
     left: 0,
     right: 0,
-    backgroundColor: 'rgba(0,0,0,0.5)'
+    backgroundColor: 'rgba(0,0,0,0.25)'
 }
 
 const WelcomePage = ({}) => (
