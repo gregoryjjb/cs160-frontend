@@ -12,6 +12,7 @@ const backgroundStyle = {
     left: 0,
     right: 0,
     //backgroundColor: 'grey',
+    backgroundColor: '#354f4e',
     backgroundImage: `url(${bgImg})`,
     backgroundSize: 'cover',
     backgroundPosition: 'center',
@@ -39,6 +40,7 @@ const centeredStyle = {
     maxWidth: 1280,
     marginLeft: 'auto',
     marginRight: 'auto',
+    padding: '0 2em',
 }
 
 const WelcomePage = ({}) => (
