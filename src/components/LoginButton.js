@@ -18,7 +18,8 @@ const LoginButton = ({clientId, onSuccess, onFailure, user}) => {
     const style = {
         backgroundColor: 'rgba(0,0,0,0)',
         border: 'none',
-        padding: '0'
+        padding: '0',
+        cursor: 'pointer'
     };
     
     return(
