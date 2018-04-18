@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { css } from 'glamor';
 
 import LogoutButtonContainer from 'containers/LogoutButtonContainer';
 import Videos from 'containers/Videos';
@@ -26,11 +27,6 @@ const buttonArea = {
     
 }
 
-const mainArea = {
-	display: 'flex',
-	width: '100%'
-}
-
 const halfArea = {
 	paddingLeft: '0.5em',
 	paddingRight: '0.5em',
@@ -39,6 +35,15 @@ const halfArea = {
     boxSizing: 'border-box',
     overflowY: 'auto',
 }
+
+const mainArea = css({
+    display: 'flex',
+    flexDirection: 'row',
+    width: '100%',
+    '@media(max-width: 900px)': {
+        flexDirection: 'column',
+    }
+})
 
 const VideoPage = ({user}) => {
     
@@ -49,7 +54,7 @@ const VideoPage = ({user}) => {
                 <div style={buttonArea}>
                     <ButtonPanelContainer />
                 </div>
-				<div style={mainArea}>
+				<div {...mainArea} >
 					<div style={halfArea}>
 						<Videos />
 					</div>
