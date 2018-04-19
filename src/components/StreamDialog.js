@@ -44,6 +44,8 @@ class StreamDialog extends Component {
                     audio: false,
                     video: { width: 640, height: 480 },
                 };
+                
+                document.querySelector('#stream-video').src = '';
         
                 navigator.mediaDevices.getUserMedia(constraints)
                 .then(stream => {
