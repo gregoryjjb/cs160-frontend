@@ -53,4 +53,13 @@ api.postVideo = (data, file) => {
 	)
 }
 
+api.deleteVideo = (id) => {
+	
+	console.log("GOING TO DELETE", id);
+	
+	return axios.delete(
+		`api/videos/${getUserId()}/${id}`
+	)
+}
+
 export default api;
