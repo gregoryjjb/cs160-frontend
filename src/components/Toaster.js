@@ -11,7 +11,13 @@ const style = {
 const Toaster = ({toasts, onAction}) => (
 	<div style={style} >
 		{toasts.slice(0).reverse().map((toast, key) => (
-			<Toast message={toast.message} index={key} id={toast.id} onAction={onAction} />
+			<Toast
+				message={toast.message}
+				key={key}
+				index={key}
+				id={toast.id}
+				onAction={onAction}
+			/>
 		))}
 	</div>
 )
