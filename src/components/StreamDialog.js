@@ -10,6 +10,7 @@ import {
     DialogFooterButton,
     DialogBackdrop
 } from 'rmwc/Dialog';
+import { LinearProgress } from 'rmwc/LinearProgress';
 import io from 'socket.io-client';
 import ss from 'socket.io-stream';
 
@@ -28,7 +29,9 @@ class StreamDialog extends Component {
         super(props);
 
         this.state = {
-            localstream: null,
+			localstream: null,
+			loading: false,
+			error: '',
         }
     }
 
@@ -43,7 +46,9 @@ class StreamDialog extends Component {
                 const constraints = window.constraints = {
                     audio: false,
                     video: { width: 640, height: 480 },
-                };
+				};
+				
+				this.setState({loading: true, error: ''});
                 
                 document.querySelector('#stream-video').src = '';
         
@@ -65,7 +70,9 @@ class StreamDialog extends Component {
                     ss(this.socket).emit('vid', this.socketStream);
                     
                     ss(this.socket).on('vid-back', backStream => {
-                        
+						
+						this.setState({loading: false});
+						
                         console.log("Server opened backwards stream");
                         
                         var elem = document.querySelector('#stream-video');
@@ -96,7 +103,11 @@ class StreamDialog extends Component {
                     })
                 })
                 .catch(error => {
-                    console.error("Error getting webcam", error);
+					console.error("Error getting webcam", error);
+					this.setState({
+						loading: false,
+						error: 'No webcam found!',
+					})
                 })
             }
         }
@@ -123,6 +134,8 @@ class StreamDialog extends Component {
             <Dialog open={this.props.isOpen} onClose={this.onClose} >
                 <DialogSurface>
                     <DialogBody>
+						{this.state.loading ? <LinearProgress determinate={false} /> : null }
+						{this.state.error !== '' ? <h2>{this.state.error}</h2> : null }
                         <video id="stream-video" autoPlay playsInline style={{width: '100%'}} />
                     </DialogBody>
                     <DialogFooter>
