@@ -1,5 +1,7 @@
 FROM node:9
 
+ARG google_client_id
+
 # Create app directory
 WORKDIR /usr/src/app
 
@@ -15,11 +17,14 @@ RUN npm install
 # Bundle app source
 COPY . .
 
+# This has to be baked in to the front end build
+RUN echo REACT_APP_GOOGLE_CLIENT_ID=$google_client_id > .env.local
+#RUN cat .env.local
+
 # Build the front end
 RUN npm run build
 #RUN cp -R ./build/* ./www
 
-RUN ["chmod", "+x", "./docker-entrypoint.sh"]
-
 # Copy files to www directory (should be volume-mounted)
+RUN chmod +x *-entrypoint.sh
 ENTRYPOINT ["./docker-entrypoint.sh"]
